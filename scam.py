@@ -69,7 +69,7 @@ for name in names:
 
     random_provider = random.choice(theE)
 
-    username = name.lower() + xname + random_provider
+    username = name.lower() + xname + '@' + random_provider
     password = passwd # random.choice(passwds) + random.choice(names) #''.join(random.choice(string.digits) for i in range(2))
     # password = ''.join(random.choice(chars) for i in range(12))
 
@@ -77,10 +77,8 @@ for name in names:
         'username': username,
         'password': password
     })
-    # response.raise_for_status()
 
-    # traz = response.content #.decode('utf-8')
-    # print(traz)
+    # print ('%s --  %s' % (username, password))
 
-    # print ('sending  %s --  %s' % (username, password))
-    print('{0:25} @ {1:25} > {2:10}'.format(name.lower() + xname,random_provider.replace('@',''), password))
+    # Beautiful, Clean output
+    print('{0:25} @ {1:25} > {2:10}'.format(name.lower() + xname,random_provider, password))

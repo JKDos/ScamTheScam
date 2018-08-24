@@ -6,6 +6,7 @@ import json
 import time
 #import scam1
 
+
 chars = string.ascii_letters + string.digits + '!@#$%^&*'
 random.seed = (os.urandom(1024))
 
@@ -52,7 +53,6 @@ def buildPass(daPass,daNum):
 
 
 for name in names:
-    #name_extra = ''.join(random.choice(string.digits)) + ''.join(random.choice(string.digits))
 
     # build a name
     decision = random.randint(0,100)
@@ -66,19 +66,24 @@ for name in names:
     decision = random.randint(0,100)
     passwd = buildPass(passwd,decision)
 
-
-    random_provider = random.choice(theE)
+    decision = random.randint(0,100)
+    if (decision > 80):
+        random_provider = 'gmail.com'
+    else:
+        random_provider = random.choice(theE)
 
     username = name.lower() + xname + '@' + random_provider
-    password = passwd # random.choice(passwds) + random.choice(names) #''.join(random.choice(string.digits) for i in range(2))
-    # password = ''.join(random.choice(chars) for i in range(12))
+    password = passwd
+
+
 
     requests.post(url, allow_redirects=False, data={
         'username': username,
         'password': password
     })
 
-    # print ('%s --  %s' % (username, password))
 
     # Beautiful, Clean output
-    print('{0:25} @ {1:25} > {2:10}'.format(name.lower() + xname,random_provider, password))
+    fakeoutput = '{0:25} @ {1:25} > {2:10}'.format(name.lower() + xname,random_provider, password)
+
+    print(fakeoutput)
